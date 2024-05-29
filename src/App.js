@@ -2,16 +2,17 @@
 import './App.css';
 import Products from './components/Products/Products';
 import {a,b} from './components/Products/Products';
+import Navbar from './components/Navbars/Navbar'
 
 
 function App() {
   console.log(a);
   console.log(b);
   return (
-    <div className="App">
-     <a/>
-      <Products />
-    </div>
+   <header className="App-header">
+      <Navbar/>
+   </header>
+
   );
 }
 
@@ -37,3 +38,15 @@ export default App;
 
 // Navbar Component
 // use a ul as a container and there will be 4 li 
+// we will use icons to render the images 
+// we will create under line image using before , after
+// onhover make 
+
+// typewriter Component
+// wwe will store all the text in the array . 
+// and then from array we will display one element , then delete it after every 3-4 seconds 
+
+// ty
+
+// whats advantage of fonts , you can get flexibility .
+// 4 efficiency hacks , your images should be served in a server , using a zip 
