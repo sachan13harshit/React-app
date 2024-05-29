@@ -6,12 +6,15 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  
     <App />
-  </React.StrictMode>
+    // <div>Hello World</div>
+ 
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+// an empty div has been created with id root for react to start . 
+// react dom is used for react to make sure that it connects to the dom
