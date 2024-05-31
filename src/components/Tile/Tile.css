@@ -1,0 +1,25 @@
+.tile{
+    display: flex;
+    
+}
+.tile.img-right{
+    flex-direction: row-reverse;
+}
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: blue;
+}
+.green{
+    background-color: green;
+}
+.yellow{
+    background-color: yellow;
+}
+.black{
+    background-color: black;
+}
+
+
+

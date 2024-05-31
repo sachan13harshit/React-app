@@ -1,17 +1,59 @@
 
 import './App.css';
+import logo from './logo.svg';
 import Products from './components/Products/Products';
 import {a,b} from './components/Products/Products';
-import Navbar from './components/Navbars/Navbar'
-
-
+import NavBar from './components/Navbars/Navbar'
+import Typing from './components/Typing/Typing';
+import Tile from './components/Tile/Tile';
+import Banner  from './components/Banner/Banner';
+import ProgressBar from './components/ProgressBar/ProgressBar';
+import { useState } from 'react';
+import { useEffect } from 'react';
 function App() {
-  console.log(a);
-  console.log(b);
+  const [percentage, setPercentage] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPercentage((prev) => (prev < 100 ? prev + 10 : 100));
+    }, 1000)
+
+    return () => clearInterval(interval);
+  })
   return (
-   <header className="App-header">
-      <Navbar/>
-   </header>
+    <div className="App">
+    <header className="App-header">
+      <img src={logo} className="App-logo" alt="logo" />
+      <NavBar />
+
+    </header>
+    <Typing
+        text={[
+          "Hello, welcome to the typing effect demo!",
+          "Enjoy exploring this cool effect!",
+          "This is an example of typing and deleting text.",
+        ]}
+        typingSpeed={100}
+      deletingSpeed={50}
+      duration={1000}
+      
+      />
+      <Tile 
+         header={"Header"}
+         subHeader={"this is subheader"}
+         img={"https://cdn.dribbble.com/users/3484830/screenshots/16787618/media/b134e73ef667b926c76d8ce3f962dba2.gif"}
+          text={"this is the text"}
+          link={"https://www.scaler.com"}
+          linkText={"Scaler"}
+          position={"img-right"}
+          bgColor={"bg-light"}
+          />
+
+          {/* <Banner /> */}
+
+          <ProgressBar percentage={percentage}/>
+         
+
+  </div>
 
   );
 }
