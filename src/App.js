@@ -1,60 +1,63 @@
 
 import './App.css';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import Products from './components/Products/Products';
 import {a,b} from './components/Products/Products';
-import NavBar from './components/Navbars/Navbar'
-import Typing from './components/Typing/Typing';
-import Tile from './components/Tile/Tile';
-import Banner  from './components/Banner/Banner';
-import ProgressBar from './components/ProgressBar/ProgressBar';
-import { useState } from 'react';
-import { useEffect } from 'react';
+// import NavBar from './components/Navbars/Navbar'
+// import Typing from './components/Typing/Typing';
+// import Tile from './components/Tile/Tile';
+// import Banner  from './components/Banner/Banner';
+// import ProgressBar from './components/ProgressBar/ProgressBar';
+// import { useState } from 'react';
+// import { useEffect } from 'react';
 function App() {
-  const [percentage, setPercentage] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPercentage((prev) => (prev < 100 ? prev + 10 : 100));
-    }, 1000)
+  // const [percentage, setPercentage] = useState(0);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setPercentage((prev) => (prev < 100 ? prev + 10 : 100));
+  //   }, 1000)
 
-    return () => clearInterval(interval);
-  })
-  return (
-    <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <NavBar />
+  //   return () => clearInterval(interval);
+  // })
+  // return (
+  //   <div className="App">
+  //   <header className="App-header">
+  //     <img src={logo} className="App-logo" alt="logo" />
+  //     <NavBar />
 
-    </header>
-    <Typing
-        text={[
-          "Hello, welcome to the typing effect demo!",
-          "Enjoy exploring this cool effect!",
-          "This is an example of typing and deleting text.",
-        ]}
-        typingSpeed={100}
-      deletingSpeed={50}
-      duration={1000}
+  //   </header>
+  //   <Typing
+  //       text={[
+  //         "Hello, welcome to the typing effect demo!",
+  //         "Enjoy exploring this cool effect!",
+  //         "This is an example of typing and deleting text.",
+  //       ]}
+  //       typingSpeed={100}
+  //     deletingSpeed={50}
+  //     duration={1000}
       
-      />
-      <Tile 
-         header={"Header"}
-         subHeader={"this is subheader"}
-         img={"https://cdn.dribbble.com/users/3484830/screenshots/16787618/media/b134e73ef667b926c76d8ce3f962dba2.gif"}
-          text={"this is the text"}
-          link={"https://www.scaler.com"}
-          linkText={"Scaler"}
-          position={"img-right"}
-          bgColor={"bg-light"}
-          />
+  //     />
+  //     <Tile 
+  //        header={"Header"}
+  //        subHeader={"this is subheader"}
+  //        img={"https://cdn.dribbble.com/users/3484830/screenshots/16787618/media/b134e73ef667b926c76d8ce3f962dba2.gif"}
+  //         text={"this is the text"}
+  //         link={"https://www.scaler.com"}
+  //         linkText={"Scaler"}
+  //         position={"img-right"}
+  //         bgColor={"bg-light"}
+  //         />
 
-          {/* <Banner /> */}
+  //         {/* <Banner /> */}
 
-          <ProgressBar percentage={percentage}/>
+  //         <ProgressBar percentage={percentage}/>
+
          
 
-  </div>
-
+  return (
+    <div className="App">
+      <Products />
+    </div>
   );
 }
 
@@ -92,3 +95,45 @@ export default App;
 
 // whats advantage of fonts , you can get flexibility .
 // 4 efficiency hacks , your images should be served in a server , using a zip 
+
+
+
+// when passing properties , or probs or paramter 
+//{props.title} - is used to access the title property of the props object
+// in js class is a reserved word , so we use className
+// hooks are helper functions.  
+// hooks are used to add functionality to the component
+// useState()
+// useEffect()
+// useRef()
+// custom hooks -
+// default hooks are provided by react
+// they should be idempotent, they should not be an condition or loop.
+// they should not render a ui .
+// useRef is used to point to a 
+
+
+// state variable is used to store the state of the component
+// and the value of a variable would be retained on re render
+// mounting is the first time the function is called 
+// rerendering is when the function is called again again
+
+// useState(default value)
+// returns as an array [stateVar , settetFun]
+
+
+// this is a control component , the value of input and output is contolled
+
+
+// useEffect(fn , []) , i will take two aprameters , one callback function and an array of dependicies .   this callback function will be called when the component is mounted and when the component is updated.
+
+// in dependency array , state variables , probs that are state variables in the parent component , and functions that are state variables in the parent component.
+
+// useref , usestate - , both persist , useref dont rerenders , usestate renders .
+
+
+
+// empty dependency array = only once mounting
+//no dependency array = every time the component is mounted and rerendered
+// dependency array = only when the value of the dependency changes + mounting  , whole function will be called again
+

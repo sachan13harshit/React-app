@@ -20,8 +20,3 @@ function Effect(){
 }
 
 export default Effect;
-
-// empty dependency array = only once mounting
-//no dependency array = every time the component is mounted and rerendered
-// dependency array = only when the value of the dependency changes + mounting  , whole function will be called again
-
