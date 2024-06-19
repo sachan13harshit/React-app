@@ -5,13 +5,13 @@ import AddToCart from "../AddToCart/AddToCart";
 import Effect from "../Effect/Effect";
 import logo1 from '../../Assets/logo1.png';
 
-function ProductCard({title,price}){
+function ProductCard({product , cart , increaseQuantity, decreaseQuantity}){
     let pRef = useRef();
     let inputRef = useRef();
     let outputRef = useRef();
     let [inputValue, setInputValue] = useState('class');
     function printTitle(){
-        console.log(title);
+    
         console.log(pRef.current.innerText);
        
         // console.log(inputRef.current.value);
@@ -27,14 +27,14 @@ function ProductCard({title,price}){
     //   }
     return (
         <div className="product-card">
-       <p onClick={printTitle}> {title}</p> 
-       <p ref={pRef}> {price} </p>
+       <p onClick={printTitle}> {product.title}</p> 
+       <p ref={pRef}> {product.price} </p>
          <img src={logo1} alt="logo" />
       {/* <input type="text" ref={inputRef}  onChange={handleInputChange} />
         <p ref={outputRef}> Over here is the input </p> */}
         <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
         <p> Output is :  {inputValue} </p>
-        <AddToCart inputValue={inputValue} />
+        <AddToCart product={product} cart={cart} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity} />
         <Effect />
         </div>
     )

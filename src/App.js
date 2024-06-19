@@ -8,8 +8,9 @@ import {a,b} from './components/Products/Products';
 // import Tile from './components/Tile/Tile';
 // import Banner  from './components/Banner/Banner';
 // import ProgressBar from './components/ProgressBar/ProgressBar';
-// import { useState } from 'react';
-// import { useEffect } from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import Cart from './components/Cart/Cart';
 function App() {
   // const [percentage, setPercentage] = useState(0);
   // useEffect(() => {
@@ -52,16 +53,43 @@ function App() {
 
   //         <ProgressBar percentage={percentage}/>
 
+  const [cart , setCart] = useState({});
+  function increaseQuantity(Product){
+    console.log(Product);
+    const newCart = {...cart};
+    // ...Cart is used to copy the cart object , so that we dont change the original cart object
+    if(!newCart[Product.id]){
+      newCart[Product.id] = {
+       ...Product,
+        quantity : 0
+      };
+    }
+    newCart[Product.id].quantity++;
+    setCart(newCart);    
+  }
+  function decreaseQuantity(Product){
+    const newCart = {...cart};
+    if(!newCart[Product.id]){
+      return;
+    }
+    newCart[Product.id].quantity--;
+
+    if(newCart[Product.id].quantity === 0){
+      delete newCart[Product.id];
+    }
+    setCart(newCart);
+  }
+
          
 
   return (
     <div className="App">
-      <Products />
+      <Products cart={cart} increaseQuantity = {increaseQuantity} decreaseQuantity =  {decreaseQuantity} />
     </div>
   );
 }
 
-export default App;
+
 
 
 // export a function , then export is used to export the function
@@ -136,4 +164,22 @@ export default App;
 // empty dependency array = only once mounting
 //no dependency array = every time the component is mounted and rerendered
 // dependency array = only when the value of the dependency changes + mounting  , whole function will be called again
+
+
+
+
+
+
+// button -
+// - 1 + 
+// let a = {b:10 , c:20};
+// a.b = 20;
+// let b = {...a}
+
+// a => 1234
+
+export default App;
+
+// 
+
 

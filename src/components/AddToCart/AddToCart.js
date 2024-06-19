@@ -1,9 +1,33 @@
-function AddToCart({inputValue}) {
-    return (
-        <div>
-            AddToCart - {inputValue}
-        </div>
-    )
+function AddToCart({product , cart , increaseQuantity , decreaseQuantity }) {
+    function increase(){
+        console.log(product);
+        increaseQuantity(product);
+        
+    }
+    function decrease(){
+        decreaseQuantity(product);
+    }
+    let quantity = cart[product.id] ? cart[product.id].quantity : 0;
+    if(quantity===0){
+        return (
+            <div>
+               <button onClick = {increase} > Add To Cart </button>
+               
+              
+            </div>
+        )
+    }
+    else{
+        return (
+            <div>
+               <button onClick = {increase} > + </button>
+                <span> {quantity} </span>
+               <button onClick = {decrease} > - </button>
+            </div>
+        )
+    }
+
+   
 }
 
 export default AddToCart;
