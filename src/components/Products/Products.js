@@ -1,7 +1,10 @@
 import ProductCard from "../ProductCard/ProductCard";
 import { useEffect, useState } from "react";
 import useWindowSize from "../hooks/useWindowSize";
-function Products({cart, increaseQuantity, decreaseQuantity}) {
+import { useContext } from "react";
+import CartContext from "../../context/CartContext";
+function Products() {
+    const {cart , increaseQuantity , decreaseQuantity} = useContext(CartContext);
     const products = [
         {
         id: 1,
@@ -71,7 +74,7 @@ function Products({cart, increaseQuantity, decreaseQuantity}) {
         <div>
            {
                 products.map(function(item,index){
-                    return (<ProductCard key = {index} product={item} cart= {cart} increaseQuantity= {increaseQuantity} decreaseQuantity = {decreaseQuantity}/>)
+                    return (<ProductCard key = {index} product={item} />)
                     
                 })
                 // useWindowSize();

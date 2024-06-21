@@ -11,6 +11,8 @@ import {a,b} from './components/Products/Products';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Cart from './components/Cart/Cart';
+import { createContext } from 'react';
+import CartContext from './context/CartContext';
 function App() {
   // const [percentage, setPercentage] = useState(0);
   // useEffect(() => {
@@ -79,13 +81,12 @@ function App() {
     }
     setCart(newCart);
   }
-
-         
-
   return (
-    <div className="App">
+    <CartContext.Provider value={{cart,increaseQuantity,decreaseQuantity}}>
+       <div className="App">
       <Products cart={cart} increaseQuantity = {increaseQuantity} decreaseQuantity =  {decreaseQuantity} />
-    </div>
+      </div>
+    </CartContext.Provider>
   );
 }
 
@@ -178,6 +179,8 @@ function App() {
 
 // a => 1234
 // 
+
+// pages will not be imported in somw another way , we will use the router to navigate to the pages
 
 export default App;
 

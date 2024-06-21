@@ -4,8 +4,11 @@ import {useState} from "react";
 import AddToCart from "../AddToCart/AddToCart";
 import Effect from "../Effect/Effect";
 import logo1 from '../../Assets/logo1.png';
+import { useContext } from "react";
+import CartContext from "../../context/CartContext";
 
-function ProductCard({product , cart , increaseQuantity, decreaseQuantity}){
+function ProductCard({product }){
+    const {cart , increaseQuantity , decreaseQuantity} = useContext(CartContext);
     let pRef = useRef();
     let inputRef = useRef();
     let outputRef = useRef();
@@ -34,7 +37,7 @@ function ProductCard({product , cart , increaseQuantity, decreaseQuantity}){
         <p ref={outputRef}> Over here is the input </p> */}
         <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
         <p> Output is :  {inputValue} </p>
-        <AddToCart product={product} cart={cart} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity} />
+        <AddToCart product={product}  />
         <Effect />
         </div>
     )
