@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import useWindowSize from "../hooks/useWindowSize";
 import { useContext } from "react";
 import CartContext from "../../context/CartContext";
+import React from "react";
 function Products() {
     const {cart , increaseQuantity , decreaseQuantity} = useContext(CartContext);
+    console.log("products");
     const products = [
         {
         id: 1,
@@ -86,7 +88,7 @@ function Products() {
 
 export let a = 10;
 export let b = 20;
-export default Products;
+export default React.memo(Products);
 
 
 // for not rerendering , we will use useeffect hook ., with empty array as second argument .
