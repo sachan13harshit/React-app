@@ -2,6 +2,7 @@ import {useSelector , useDispatch} from "react-redux";
 function ReduxAddToCart({product}) {
     // useSelector hook .
     // for dispatch
+    console.log("add to cart" , product.id);
     let dispatch = useDispatch();
     function increase(){
 
@@ -10,31 +11,30 @@ function ReduxAddToCart({product}) {
     }
     function decrease(){
         // dispatch ({type : "DECREASE_QUANTITY" , payload : product})
-        dispatch({type : "REMOVE_TO_CART" , payload : product});
+        dispatch({type : "REMOVE_FROM_CART" , payload : product});
     }
 
-    let state = useSelector((state) => {
-        return state.items;
+    let quantity = useSelector((state) => {
+        return state.items[product.id] ?.quantity || 0;
     });
 
 
-    // let quantity = cart[product.id] ? cart[product.id].quantity : 0;
-    // if(quantity===0){
-    //     return (
-    //         <div>
-    //            <button onClick = {increase} > Add To Cart </button>
-    //         </div>
-    //     )
-    // }
-    // else{
-    //     return (
-    //         <div>
-    //            <button onClick = {increase} > + </button>
-    //             <span> {quantity} </span>
-    //            <button onClick = {decrease} > - </button>
-    //         </div>
-    //     )
-    // }
+    if(quantity===0){
+        return (
+            <div>
+               <button onClick = {increase} > AddToCart </button>
+            </div>
+        )
+    }
+    else{
+        return (
+            <div>
+               <button onClick = {increase} > + </button>
+                <span> {quantity} </span>
+               <button onClick = {decrease} > - </button>
+            </div>
+        )
+    }
 
    
 }

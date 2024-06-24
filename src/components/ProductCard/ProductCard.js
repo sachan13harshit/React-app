@@ -1,7 +1,7 @@
 import"./ProductCard.css";
 import {useRef} from "react";
 import {useState} from "react"; 
-import AddToCart from "../AddToCart/AddToCart";
+import ReduxAddToCart from "../ReduxAddtoCart/ReduxAddtoCart";
 import Effect from "../Effect/Effect";
 import logo1 from '../../Assets/logo1.png';
 import { useContext } from "react";
@@ -37,7 +37,7 @@ function ProductCard({product }){
         <p ref={outputRef}> Over here is the input </p> */}
         <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
         <p> Output is :  {inputValue} </p>
-        <AddToCart product={product}  />
+        <ReduxAddToCart product={product}  />
         <Effect />
         </div>
     )

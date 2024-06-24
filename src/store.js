@@ -1,5 +1,7 @@
 import { createStore } from "redux";
 
+import {act} from "react";
+import { omit } from "lodash";
 
 function cartReducer(state = {items : {}} , action ){
     switch(action.type){
@@ -33,17 +35,12 @@ function cartReducer(state = {items : {}} , action ){
         }
         case "REMOVE_FROM_CART":{
             const product = action.payload;
-            if(state.items[product.id]){
+            if(state.items[product.id].quantity <= 1){
                 return {
                     ...state,
-                    items : {
-                        ...state.items,
-                        [product.id] : {
-                            ...state.items[product.id],
-                            quantity : state.items[product.id].quantity - 1
-                        }
-                    }
+                    items : omit(state.items , [product.id])
                 }
+
             }
             else{
                 return {
@@ -51,8 +48,8 @@ function cartReducer(state = {items : {}} , action ){
                     items : {
                         ...state.items,
                         [product.id] : {
-                            ...product,
-                            quantity : 0
+                            ...state.items[product.id],
+                            quantity : state.items[product.id].quantity - 1
                         }
                     }
                 }
