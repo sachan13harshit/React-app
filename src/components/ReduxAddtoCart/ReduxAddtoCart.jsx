@@ -3,9 +3,9 @@ function ReduxAddToCart({product}) {
     // useSelector hook .
     // for dispatch
     console.log("add to cart" , product.id);
+    console.log(product)
     let dispatch = useDispatch();
     function increase(){
-
         // dispatch ({type : "INCREASE_QUANTITY" , payload : product})
         dispatch({type : "ADD_TO_CART" , payload : product});
     }
@@ -13,12 +13,9 @@ function ReduxAddToCart({product}) {
         // dispatch ({type : "DECREASE_QUANTITY" , payload : product})
         dispatch({type : "REMOVE_FROM_CART" , payload : product});
     }
-
     let quantity = useSelector((state) => {
         return state.items[product.id] ?.quantity || 0;
     });
-
-
     if(quantity===0){
         return (
             <div>
@@ -35,10 +32,7 @@ function ReduxAddToCart({product}) {
             </div>
         )
     }
-
-   
 }
-
 export default ReduxAddToCart;
 
 

@@ -14,7 +14,6 @@ function ProductCard({product }){
     let outputRef = useRef();
     let [inputValue, setInputValue] = useState('class');
     function printTitle(){
-    
         console.log(pRef.current.innerText);
        
         // console.log(inputRef.current.value);
