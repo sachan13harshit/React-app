@@ -8,16 +8,16 @@ function ReduxAddToCart({product}) {
     let dispatch = useDispatch();
     function increase(){
         // dispatch ({type : "INCREASE_QUANTITY" , payload : product})
-        addToCart(product);
+        dispatch(addToCart(product));
         // dispatch({type : "ADD_TO_CART" , payload : product});
     }
     function decrease(){
         // dispatch ({type : "DECREASE_QUANTITY" , payload : product})
         // dispatch({type : "REMOVE_FROM_CART" , payload : product});
-        RemoveToCart(product);
+        dispatch(RemoveToCart(product));
     }
     let quantity = useSelector((state) => {
-        return state.items[product.id] ?.quantity || 0;
+        return state.cart.items[product.id] ?.quantity || 0;
     });
     if(quantity===0){
         return (
@@ -37,8 +37,6 @@ function ReduxAddToCart({product}) {
     }
 }
 export default ReduxAddToCart;
-
-
 // We can store products in an arrayList , as in array of objects , we can use map function to iterate , if suppose removing
 
 

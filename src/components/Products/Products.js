@@ -5,52 +5,52 @@ import { useContext } from "react";
 import CartContext from "../../context/CartContext";
 import React from "react";
 function Products() {
-    const {cart , increaseQuantity , decreaseQuantity} = useContext(CartContext);
+    // const {cart , increaseQuantity , decreaseQuantity} = useContext(CartContext);
     console.log("products");
-    const products = [
-        {
-        id: 1,
-        title: "Apple iPhone 14",
-        price: "Rs. 1,00,000"
-        },
-        {
-        id: 2,
-        title: "Apple iPhone 13",
-        price: "Rs. 70,000"
-        },
-        {
-        id: 3,
-        title: "Google Pixel 7",
-        price: "Rs. 50,000"
-        },
-        {
-        id: 4,
-        title: "Nokia 1100",
-        price: "Rs. 2,000"
-        },
-        {
-        id: 5,
-        title: "Samsung Galaxy S10",
-        price: "Rs. 1,00,000"
-        },
-        {
-        id: 6,
-        title: "Sony Xperia S10",
-        price: "Rs. 1,00,000"
-        }
-        ];
+    // const products = [
+    //     {
+    //     id: 1,
+    //     title: "Apple iPhone 14",
+    //     price: "Rs. 1,00,000"
+    //     },
+    //     {
+    //     id: 2,
+    //     title: "Apple iPhone 13",
+    //     price: "Rs. 70,000"
+    //     },
+    //     {
+    //     id: 3,
+    //     title: "Google Pixel 7",
+    //     price: "Rs. 50,000"
+    //     },
+    //     {
+    //     id: 4,
+    //     title: "Nokia 1100",
+    //     price: "Rs. 2,000"
+    //     },
+    //     {
+    //     id: 5,
+    //     title: "Samsung Galaxy S10",
+    //     price: "Rs. 1,00,000"
+    //     },
+    //     {
+    //     id: 6,
+    //     title: "Sony Xperia S10",
+    //     price: "Rs. 1,00,000"
+    //     }
+    //     ];
 
-        function useWindowSize() {
-            let [width, setWidth] = useState(window.innerWidth);
-            let [height, setHeight] = useState(window.innerHeight);
-            useEffect(() => {
-                window.addEventListener("resize", () => {
-                    setWidth(window.innerWidth);
-                    setHeight(window.innerHeight);
-                })
-            }, [])
-            return {width, height}
-        }
+        // function useWindowSize() {
+        //     let [width, setWidth] = useState(window.innerWidth);
+        //     let [height, setHeight] = useState(window.innerHeight);
+        //     useEffect(() => {
+        //         window.addEventListener("resize", () => {
+        //             setWidth(window.innerWidth);
+        //             setHeight(window.innerHeight);
+        //         })
+        //     }, [])
+        //     return {width, height}
+        // }
 
     // // let products = []
     // let [products, setProducts] = useState([]);
@@ -72,6 +72,19 @@ function Products() {
     //     console.log(res);
     //     setProducts(res);
     // })
+    let [products, setProducts] = useState([]);
+    console.log("products")
+    console.log(useWindowSize());
+    useEffect(() => {
+      fetch("https://run.mocky.io/v3/1c9a787b-3e6b-4fc2-9460-f908e2e3cc29").then(
+        (response) => {
+          return response.json();
+        }
+      ).then((res) => {
+        console.log(res);
+        setProducts(res);
+      })
+    }, [])
         return (
         <div>
            {

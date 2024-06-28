@@ -1,19 +1,19 @@
 import { useEffect , useState } from "react";
+import { useDispatch } from "react-redux";
+import { loadCategories } from "../../stores/Categories";
 function Categories(){
+    const [categories , setCategories ] = useState([]);
+    const dispatch = useDispatch();
     useEffect(() => {
-        const [categories , setCategories ] = useState
-        fetch("https://run.mocky.io/v3/be87e9ff-5583-4602-af04-22cf5e973f16").then(
-            (res) => {
-                return res.json();
-            }
-        ).then((res) => {
-                console.log(res);
-            })
+        dispatch(loadCategories());
     },[])
-
-
-    return (<div></div>)
+    return (<div>
+        {categories.map((item)=> {
+            return (
+                <div key = {item.id}> {item.name} </div>
+            )
+        })}
+    </div>)
 }
-
 
 export default Categories;
